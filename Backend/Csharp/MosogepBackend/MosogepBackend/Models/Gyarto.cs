@@ -32,7 +32,7 @@ namespace MosogepBackend
 
 
 
-        public List<Gyarto> Getall() 
+        public static List<Gyarto> Getall() 
         {
 
             return GYARTOK.ToList();
