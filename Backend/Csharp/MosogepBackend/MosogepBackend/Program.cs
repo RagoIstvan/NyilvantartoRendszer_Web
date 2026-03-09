@@ -4,6 +4,7 @@ using MosogepBackend.Models;
 using MosogepBackend.Services;
 using MosogepBackend;
 using MosogepBackend.Controller_Api;
+using MosogepBackend.Querys_Linq;
 
 namespace MosogepBackend
 {
@@ -28,7 +29,7 @@ namespace MosogepBackend
 
                 HttpClient client = new HttpClient();
                 ArfolyamSzamolApi szamol = new ArfolyamSzamolApi(client);
-
+                HibaKuldesPyhton kuld = new HibaKuldesPyhton(client);
 
                 // EN: Fetching live data before starting the main logic
                 decimal arfolyam = await szamol.Arfolyamkeres(ArfolyamSzamolApi.Url);
@@ -37,7 +38,7 @@ namespace MosogepBackend
                 Ellenorzes ujellenorzes = new Ellenorzes();  
                 RandomGyartas gyartas = new RandomGyartas(arfolyam, kalkulator, ujellenorzes, db);
                 CsvReader reader = new CsvReader(arfolyam, kalkulator,ujellenorzes,db);
-
+                QuerysFails querys = new QuerysFails(db);
 
 
                 var admin = new User("Teszt Elek", "user1@test.com", "1234567");
@@ -80,7 +81,12 @@ namespace MosogepBackend
                 }
 
 
+                Console.WriteLine("----------25");
+                
+                querys.HibakLekerdezese();
 
+
+               await kuld.HibaKuldPyhton(querys.HibakLekerdezese(), "http://127.0.0.1:5000/hibak");
 
 
 

@@ -20,8 +20,9 @@ namespace MosogepBackend.Models
         public int MosogepId { get; set; }
 
 
-        [JsonConverter(typeof(JsonStringEnumConverter))]
         [JsonPropertyName("hibakod")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        
         public Hibakod Hibakod { get; set; }
 
         public int HibaKodSzama
