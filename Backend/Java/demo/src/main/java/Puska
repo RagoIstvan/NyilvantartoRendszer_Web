@@ -1,0 +1,29 @@
+
+Sqlite beállíátsa:
+pom.xml:
+
+    <dependency>
+        <groupId>org.xerial</groupId>
+        <artifactId>sqlite-jdbc</artifactId>
+        <version>3.45.1.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-community-dialects</artifactId>
+        <version>6.6.0.Final</version>
+    </dependency>
+
+application.properties:
+
+    # 1. Hol legyen az adatbázis? (A projekt mappájában szerviz.db néven)
+        spring.datasource.url=jdbc:sqlite:szerviz.db
+        spring.datasource.driver-class-name=org.sqlite.JDBC
+
+    # 2. Mondd meg a Hibernate-nek, hogy az új Dialektust használja!
+        spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
+        spring.jpa.hibernate.ddl-auto=update
+
+    # 3. Hogy lásd a konzolon, mit bűvészkedik a háttérben
+        spring.jpa.show-sql=true
+        spring.jpa.properties.hibernate.format_sql=true
