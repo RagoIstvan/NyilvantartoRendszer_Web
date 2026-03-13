@@ -16,15 +16,14 @@ namespace MosogepBackend.Models
         [JsonIgnore]
         public int Id { get; set; }
 
-        [JsonPropertyName("id")]
-
+        [JsonPropertyName("javaid")]
         public int JavaJavitasId { get; set; }
 
 
         [JsonPropertyName("szerelo")]
         public string Szerelo { get; set; }
 
-        [JsonPropertyName("javitasdatum")]
+        [JsonPropertyName("datum")]
         public DateTime JavtiasDatum { get; set; }
 
         [JsonPropertyName("javitasktsg")]

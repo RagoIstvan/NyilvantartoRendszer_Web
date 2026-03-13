@@ -1,4 +1,4 @@
-package Enum;
+package com.example.demo.Enum;
 
 public enum Szerelo {
 

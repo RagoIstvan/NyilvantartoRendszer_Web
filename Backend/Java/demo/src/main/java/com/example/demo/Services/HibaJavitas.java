@@ -1,10 +1,10 @@
-package Services;
+package com.example.demo.Services;
 
-import Data.Hibadb;
-import Data.Javitasrepostory;
-import Models.Hiba;
-import Models.Javitas;
-import Enum.Szerelo;
+import com.example.demo.Data.Hibadb;
+import com.example.demo.Data.Javitasrepostory;
+import com.example.demo.Models.Hiba;
+import com.example.demo.Models.Javitas;
+import com.example.demo.Enum.Szerelo;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +37,9 @@ public class HibaJavitas {
 
         Javitas ujjavitas = new Javitas();
 
-        ujjavitas.setSzerelo(SzereloGeneral());
+        Szerelo randomszerelo=SzereloGeneral();
+        ujjavitas.setSzerelo(randomszerelo);
+        ujjavitas.setMunkaber(randomszerelo.getMunkaber());
         ujjavitas.setHiba(hiba);
         ujjavitas.setJavitasdatum(hiba.getHibaDatuma().plusDays(rnd.nextInt(1, 15)));
         ujjavitas.setJavitasktsg(kalkulator.JavitasKalkulator(hiba, ujjavitas.getSzerelo()));
@@ -54,10 +56,14 @@ public class HibaJavitas {
             var mentetthibak = _Hibadb.saveAll(Bejovohiba);
 
             for (var sor : mentetthibak) {
+
                 EgyHibaJavitasa(sor);
 
-
             }
+
+
+
+
         }
         else
         {

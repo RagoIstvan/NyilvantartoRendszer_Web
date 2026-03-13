@@ -1,7 +1,7 @@
-package Services;
-import Models.Hiba;
-import Models.Javitas;
-import Enum.Szerelo;
+package com.example.demo.Services;
+import com.example.demo.Models.Hiba;
+import com.example.demo.Models.Javitas;
+import com.example.demo.Enum.Szerelo;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,5 +1,5 @@
-package Models;
-import Enum.Szerelo;
+package com.example.demo.Models;
+import com.example.demo.Enum.Szerelo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -17,7 +17,7 @@ public class Javitas
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty("id")
+    @JsonProperty("javaid")
     private int Id;
 
     @Enumerated(EnumType.STRING)
@@ -41,7 +41,14 @@ public class Javitas
     @JsonIgnore
     private Hiba Hiba;
 
+    @JsonProperty("hibaid")
+    public Integer getCsharpHibaId() {
+        if (this.Hiba != null) {
 
+            return this.Hiba.getHibaId();
+        }
+        return null;
+    }
 
 
 

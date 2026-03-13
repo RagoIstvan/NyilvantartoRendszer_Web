@@ -9,12 +9,12 @@ namespace MosogepBackend.Models
         public Hiba() { }
 
 
-        [JsonPropertyName("id")]
+        [JsonPropertyName("csharpId")]
         public int Id { get; set; }
 
         public string Sorszam { get { return $"Hiba-00{Id}"; } }
 
-        [JsonPropertyName("kulsoId")]
+        [JsonPropertyName("javaId")]
         public int KulsoId { get; set; }
 
         public int MosogepId { get; set; }

@@ -1,4 +1,4 @@
-package Models;
+package com.example.demo.Models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +19,8 @@ public class Hiba
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private   int Id;
+    @JsonProperty("javaId")
+    private int Id;
 
     @JsonProperty("hibakod")
     private String Hibakod;
@@ -30,7 +31,7 @@ public class Hiba
     @JsonProperty("hibadatum")
     private LocalDate HibaDatuma;
 
-    @JsonProperty("Id")
+    @JsonProperty("csharpId")
     private int HibaId;
 
 

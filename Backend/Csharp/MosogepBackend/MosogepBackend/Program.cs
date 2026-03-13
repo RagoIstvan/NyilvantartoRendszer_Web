@@ -30,6 +30,7 @@ namespace MosogepBackend
                 HttpClient client = new HttpClient();
                 ArfolyamSzamolApi szamol = new ArfolyamSzamolApi(client);
                 HibaKuldesPyhton kuld = new HibaKuldesPyhton(client);
+                KommunikacioJava kuldjava = new KommunikacioJava(client,db);
 
                 // EN: Fetching live data before starting the main logic
                 decimal arfolyam = await szamol.Arfolyamkeres(ArfolyamSzamolApi.Url);
@@ -67,28 +68,52 @@ namespace MosogepBackend
 
                 egyhiba.EgyHibaMentese();
 
-                var rosszGepek = db.Gepek
-                                .Include(m => m.Hibak)
-                                .Include(m => m.Gyarto)
-                                .Where(x => x.Hibak.Any())
-                                .ToList();
+                // var rosszGepek = db.Gepek
+                //                 .Include(m => m.Hibak)
+                //                 .Include(m => m.Gyarto)
+                //                 .Where(x => x.Hibak.Any())
+                //                 .ToList();
 
-                foreach (var gep in rosszGepek)
+                // foreach (var gep in rosszGepek)
+                // {
+                //     var aktualisHiba = gep.Hibak.LastOrDefault();
+
+                //     Console.WriteLine($"{gep.Azonosito} \n {aktualisHiba}");
+                // }
+
+
+                // Console.WriteLine("----------25");
+
+                // querys.HibakLekerdezese();
+
+
+                //await kuld.HibaKuldPyhton(querys.HibakLekerdezese(), "http://127.0.0.1:5000/hibak");
+
+                querys.HibaKuldesJava();
+
+                try
                 {
-                    var aktualisHiba = gep.Hibak.LastOrDefault();
+                    var lista = await kuldjava.JavaKuldFogad(querys.HibaKuldesJava());
 
-                    Console.WriteLine($"{gep.Azonosito} \n {aktualisHiba}");
+
+
+                    await kuldjava.KapottJavitasElment(lista);
+
+
+                    var javitaslista = db.Gepek.Where(x => x.Hibak.Any()).Include(x => x.Hibak).ThenInclude(x => x.Javitas).ToList();
+
+
+                    foreach (var sor in javitaslista.SelectMany(x => x.Hibak).GroupBy(x => x.Javitas).Select(x => new { javitas = x.Key }).ToList())
+                    {
+                        Console.WriteLine($"ID: {sor.javitas.Id} \n | Dátum: {sor.javitas.JavtiasDatum} \n |  Hibaid:{sor.javitas.HibaId} \n" +
+                            $"| javitásktsg: {sor.javitas.JavitasKtsg} \n |  Szerelo {sor.javitas.Szerelo} \n | munkaber: {sor.javitas.Munkaber} \n");
+                    }
                 }
 
-
-                Console.WriteLine("----------25");
-                
-                querys.HibakLekerdezese();
-
-
-               await kuld.HibaKuldPyhton(querys.HibakLekerdezese(), "http://127.0.0.1:5000/hibak");
-
-
+                catch (Exception ex) 
+                {
+                    Console.WriteLine(ex.InnerException);
+                }
 
             }
             catch (Exception ex) 

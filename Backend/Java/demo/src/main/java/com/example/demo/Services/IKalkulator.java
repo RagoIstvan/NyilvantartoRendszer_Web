@@ -1,8 +1,8 @@
-package Services;
+package com.example.demo.Services;
 
-import Models.Hiba;
-import Enum.Szerelo;
-import Models.Javitas;
+import com.example.demo.Models.Hiba;
+import com.example.demo.Enum.Szerelo;
+import com.example.demo.Models.Javitas;
 
 public interface IKalkulator {
 

@@ -40,6 +40,19 @@ namespace MosogepBackend.Querys_Linq
 
         }
 
+        public object HibaKuldesJava()
+        {
+
+           
+
+             return  _db.Hiba.ToList();
+
+        }
+
+
+
+
+
 
 
 
