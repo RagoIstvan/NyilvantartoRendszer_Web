@@ -12,17 +12,18 @@ class Hiba(SQLModel, table=True):
 
 class Javitas(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    hiba_id: int = Field(foreign_key="hiba.id")
+    hibaid: Optional[int] = Field(default=None)
+    javaId: Optional[int] = Field(default=None)
     szerelo: str
-    javitasdatum: str
+    datum: str
     javitasktsg: int
     munkaber: int
     nyereseg: int
 
 class Naplo(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    hiba_id: int = Field(foreign_key="hiba.id")
-    javitas_id: int = Field(foreign_key="javitas.id")
+    csharpId: Optional[int] = Field(default=None)
+    gep: str
     szerelo: str
     hibakod: str
     javitasktsg: int

@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MosogepBackend.Data;
+using MosogepBackend.Event;
 using MosogepBackend.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Text;
 using System.Text.Json;
 
@@ -14,7 +12,7 @@ namespace MosogepBackend.Controller_Api
 
         private readonly HttpClient _httclient;
         private readonly Datadb _db;
-        public KommunikacioJava(HttpClient httclient,Datadb datadb)
+        public KommunikacioJava(HttpClient httclient, Datadb datadb)
         {
             _httclient = httclient;
             _db = datadb;
@@ -101,16 +99,15 @@ namespace MosogepBackend.Controller_Api
 
 
 
-                // EN: Get saved repairs from the database and trigger the log event
 
-                //var mentettJavitasok = await _db.Javitas.Include(j => j.Hiba).ToListAsync();
+                var mentettJavitasok = await _db.Javitas.Include(j => j.Hiba).ToListAsync();
 
-                //foreach (var j in mentettJavitasok)
-                //{
-                //    await JavitasNaploEvent.JavitasTortentFelir(j);
-                //    Console.WriteLine($"Mentett DB ID: {j.Id} | Hiba ID: {j.HibaId} | Szerelő: {j.Szerelo,-15} | Költség: {j.Javitaskoltseg:N0} Ft");
-                //}
-                //Console.WriteLine("=============================================\n");
+                foreach (var j in mentettJavitasok)
+                {
+                    await NaploEven.EsemenyMetodus(j);
+                    //Console.WriteLine($"Mentett DB ID: {j.Id} | Hiba ID: {j.HibaId} | Szerelő: {j.Szerelo,-15} | Költség: {j.JavitasKtsg:N0} Ft");
+                }
+                Console.WriteLine("=============================================\n");
 
             }
             catch (Exception ex)

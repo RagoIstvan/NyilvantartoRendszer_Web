@@ -1,77 +1,39 @@
 ﻿gyarto;hibakod;hibaktsg;hibadatum;javaId
-Phicolo;2;98925;2025-01-16 00:00;0
-Phicolo;4;68564;2025-08-12 00:00;0
-Phicolo;0;146708;2025-06-24 00:00;0
-Candy;4;66555;2025-08-06 00:00;0
-LG;3;72869;2025-04-23 00:00;0
-Electrolux;1;42770;2025-02-05 00:00;0
-Candy;3;53162;2025-08-19 00:00;0
-Phicolo;2;89004;2025-01-13 00:00;0
-LG;4;70058;2025-11-10 00:00;0
-Phicolo;3;30057;2025-11-12 00:00;0
-Philips;4;69541;2025-07-12 00:00;0
-Electrolux;0;61607;2025-09-04 00:00;0
-AEG;2;132201;2025-08-20 00:00;0
-Phicolo;4;69652;2025-08-18 00:00;0
-Beko;3;61575;2025-12-13 00:00;0
-Phicolo;0;122418;2025-12-18 00:00;0
-Beko;3;50624;2025-06-14 00:00;0
-LG;0;136384;2025-01-03 00:00;0
-Beko;0;86954;2025-09-15 00:00;0
-Beko;0;108287;2025-06-21 00:00;0
-Phicolo;2;103716;2025-07-05 00:00;0
-AEG;3;12273;2025-01-01 00:00;0
-Phicolo;3;59079;2025-01-30 00:00;0
-Electrolux;1;95319;2025-07-15 00:00;0
-Philips;1;73874;2025-11-13 00:00;0
-Electrolux;0;72974;2025-06-28 00:00;0
-Phicolo;0;141325;2025-10-01 00:00;0
-AEG;4;73542;2025-04-07 00:00;0
-Electrolux;2;132178;2025-11-25 00:00;0
-LG;3;40174;2025-05-04 00:00;0
-Phicolo;4;70092;2025-02-11 00:00;0
-LG;0;138882;2025-05-28 00:00;0
-Electrolux;3;12267;2025-02-10 00:00;0
-LG;1;86992;2025-12-09 00:00;0
-Electrolux;4;61644;2025-10-16 00:00;0
-Electrolux;1;107662;2025-05-04 00:00;0
-Electrolux;2;108833;2025-04-03 00:00;0
-LG;3;64376;2025-02-04 00:00;0
-Candy;2;123020;2025-11-12 00:00;0
-Candy;SzivattyuHiba;114823;2025-06-11 00:00;0
-Philips;MotorHiba;67946;2025-07-18 00:00;0
-AEG;FutesiHiba;89932;2025-02-03 00:00;0
-Candy;MotorHiba;84340;2025-12-19 00:00;0
-Candy;SzivattyuHiba;85122;2025-04-22 00:00;0
-Candy;MotorHiba;68008;2025-04-01 00:00;0
-Philips;FutesiHiba;112805;2025-12-17 00:00;0
-LG;FutesiHiba;117083;2025-03-01 00:00;0
-Phicolo;VizellatasiHiba;60949;2025-08-23 00:00;0
-LG;FutesiHiba;91262;2025-08-07 00:00;0
-Philips;FutesiHiba;127710;2025-11-29 00:00;0
-Electrolux;MotorHiba;124496;2025-01-27 00:00;0
-Philips;MotorHiba;125139;2025-02-04 00:00;0
-Electrolux;MotorHiba;57586;2025-03-14 00:00;0
-Electrolux;MotorHiba;106248;2025-01-09 00:00;0
-Electrolux;SzivattyuHiba;104481;2025-12-20 00:00;0
-Philips;VizellatasiHiba;63996;2025-01-18 00:00;0
-LG;SzenzorHiba;79789;2025-12-06 00:00;0
-AEG;SzenzorHiba;29624;2025-02-23 00:00;0
-Philips;SzivattyuHiba;78497;2025-01-16 00:00;0
-Candy;MotorHiba;125416;2025-01-11 00:00;0
-Electrolux;VizellatasiHiba;70795;2025-08-16 00:00;0
-AEG;VizellatasiHiba;69481;2025-05-08 00:00;0
-AEG;MotorHiba;87203;2025-10-06 00:00;0
-LG;VizellatasiHiba;61630;2025-02-21 00:00;0
-Candy;VizellatasiHiba;74311;2025-01-01 00:00;0
-AEG;FutesiHiba;111340;2025-01-12 00:00;0
-Phicolo;FutesiHiba;132415;2025-06-08 00:00;0
-Beko;VizellatasiHiba;74557;2025-07-28 00:00;0
-Electrolux;SzivattyuHiba;54279;2025-07-04 00:00;0
-Electrolux;VizellatasiHiba;66579;2025-05-18 00:00;0
-Electrolux;VizellatasiHiba;67033;2025-04-18 00:00;0
-Philips;MotorHiba;136672;2025-09-15 00:00;0
-LG;FutesiHiba;113156;2025-01-09 00:00;0
-Philips;MotorHiba;125660;2025-10-09 00:00;0
-Beko;VizellatasiHiba;65156;2025-07-16 00:00;0
-Electrolux;VizellatasiHiba;67755;2025-06-01 00:00;0
+AEG;MotorHiba;145749;2025-11-28;0
+Philips;FutesiHiba;116990;2025-08-27;0
+LG;SzivattyuHiba;51646;2025-02-21;0
+Electrolux;VizellatasiHiba;74667;2025-01-24;0
+LG;SzenzorHiba;91280;2025-08-17;0
+LG;FutesiHiba;82266;2025-05-25;0
+Electrolux;SzenzorHiba;18644;2025-08-16;0
+AEG;FutesiHiba;137883;2025-07-17;0
+Philips;MotorHiba;89695;2025-11-03;0
+LG;SzivattyuHiba;115271;2025-03-20;0
+Phicolo;VizellatasiHiba;71761;2025-01-22;0
+Candy;SzivattyuHiba;75829;2025-11-15;0
+Candy;MotorHiba;120130;2025-08-01;0
+Phicolo;VizellatasiHiba;66257;2025-08-30;0
+LG;VizellatasiHiba;60955;2025-08-17;0
+Phicolo;MotorHiba;94559;2025-07-24;0
+Phicolo;SzenzorHiba;84733;2025-09-15;0
+Phicolo;VizellatasiHiba;62280;2025-02-01;0
+Phicolo;FutesiHiba;115148;2025-12-07;0
+AEG;VizellatasiHiba;70480;2025-06-16;0
+Phicolo;MotorHiba;112111;2025-05-05;0
+Philips;SzivattyuHiba;55309;2025-05-13;0
+Phicolo;MotorHiba;65642;2025-01-10;0
+Candy;SzivattyuHiba;94922;2025-09-29;0
+Candy;SzenzorHiba;89449;2025-07-27;0
+Beko;SzenzorHiba;55806;2025-09-05;0
+AEG;MotorHiba;70170;2025-12-14;0
+Candy;SzivattyuHiba;34316;2025-09-28;0
+LG;MotorHiba;104963;2025-07-06;0
+Candy;SzenzorHiba;10886;2025-10-03;0
+Phicolo;SzivattyuHiba;44598;2025-10-02;0
+Beko;MotorHiba;84569;2025-01-15;0
+Philips;MotorHiba;123707;2025-01-16;0
+Phicolo;SzivattyuHiba;31787;2025-07-07;0
+LG;MotorHiba;50308;2025-03-08;0
+Phicolo;SzenzorHiba;14810;2025-03-28;0
+Beko;SzivattyuHiba;87336;2025-02-14;0
+Phicolo;MotorHiba;121812;2025-11-30;0

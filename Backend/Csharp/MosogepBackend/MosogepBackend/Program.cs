@@ -4,7 +4,7 @@ using MosogepBackend.Factorys;
 using MosogepBackend.Models;
 using MosogepBackend.Querys_Linq;
 using MosogepBackend.Services;
-
+using MosogepBackend.Event;
 namespace MosogepBackend
 {
     public class Program
@@ -20,6 +20,33 @@ namespace MosogepBackend
                 await db.Database.EnsureDeletedAsync();
                 await db.Database.EnsureCreatedAsync();
 
+
+
+                NaploEven.EsemenyDelegate += async (Javitas egyed) =>
+                {
+
+                    JavitasNaplo naplo = new JavitasNaplo()
+                    {
+                        JatitasKtsg = egyed.JavitasKtsg,
+                        FeliratkozasDatuma = DateTime.Now,
+                        Hibakod = egyed.Hiba.Hibakod,
+                        Szerelo = egyed.Szerelo
+
+                    };
+
+
+                    var index = egyed.Hiba.MosogepId;
+
+                    var gep =  db.Gepek.Include(x => x.Gyarto).FirstOrDefault(x => x.Id == index);
+
+                    naplo.Gepadatai = $"{gep.Gyarto.Nev} - {gep.Tipus}";
+
+                    db.Naplo.Add(naplo);
+
+                    await db.SaveChangesAsync();
+
+                };
+                NaploEven even = new NaploEven(db);
 
                 // EN: Manual Dependency Injection (DI) setup
                 Kalkulator kalkulator = new Kalkulator();
@@ -83,36 +110,12 @@ namespace MosogepBackend
 
                 // Console.WriteLine("----------25");
 
-                querys.HibakLekerdezese();
-
-                var hibak = db.Hiba.ToList();
-
-                var index = hibak.Select(x => x.MosogepId).FirstOrDefault();
-
-                var gep = db.Gepek.FirstOrDefault(x => x.Id == index);
-
-                var adatokPythonnak = db.Hiba
-                    .Select(h => new
-                    {
-                       
-                        GepNeve = db.Gepek.Where(g => g.Id == h.MosogepId).Select(g => g.Gyarto.Nev).FirstOrDefault(),
-                        HibaAdat = h
-                    })
-                    .Select(z => new
-                    {
-                        gyarto= z.GepNeve,
-                        hibakod = z.HibaAdat.Hibakod.ToString(),
-                        hibaktsg = z.HibaAdat.HibaKtsg,
-                        hibadatum = z.HibaAdat.HibaDatuma.ToString("yyyy-MM-dd"),
-                        javaId = z.HibaAdat.KulsoId
-                    })
-                    .ToList();
-
-
-
-                await kuld.HibaKuldPyhton(adatokPythonnak, "http://127.0.0.1:5000/hiba");
+               
 
                 querys.HibaKuldesJava();
+
+
+               
 
                 try
                 {
@@ -138,12 +141,61 @@ namespace MosogepBackend
                     Console.WriteLine(ex.InnerException);
                 }
 
+                Console.WriteLine("NAPLÓ KIIRATÁAS----------------");
+
+
+               
+
+              await  even.NaploKiiras();
+
+
+                querys.HibakLekerdezese();
+
+                var hibak = db.Hiba.ToList();
+
+                var index = hibak.Select(x => x.MosogepId).FirstOrDefault();
+
+                var gep = db.Gepek.FirstOrDefault(x => x.Id == index);
+
+                var adatokPythonnak = db.Hiba
+                    .Select(h => new
+                    {
+
+                        GepNeve = db.Gepek.Where(g => g.Id == h.MosogepId).Select(g => g.Gyarto.Nev).FirstOrDefault(),
+                        HibaAdat = h
+                    })
+                    .Select(z => new
+                    {
+                        gyarto = z.GepNeve,
+                        hibakod = z.HibaAdat.Hibakod.ToString(),
+                        hibaktsg = z.HibaAdat.HibaKtsg,
+                        hibadatum = z.HibaAdat.HibaDatuma.ToString("yyyy-MM-dd"),
+                        javaId = z.HibaAdat.KulsoId
+                    })
+                    .ToList();
+
+                var lista2 = await even.NaploKiiras2();
+
+                var lista3 = db.Javitas.Select(x => new { javaid = x.JavaJavitasId, cshaprid = x.HibaId, szerelo = x.Szerelo, 
+                    datum = x.JavtiasDatum, javitasktsg = x.JavitasKtsg,munkaber=x.Munkaber, nyereseg=x.Nyereseg }).ToList();
+
+
+                await kuld.HibaKuldPyhton(adatokPythonnak, "http://127.0.0.1:5000/hiba");
+
+                await kuld.HibaKuldPyhton(lista2, "http://127.0.0.1:5000/naplo");
+
+                await kuld.HibaKuldPyhton(lista3, "http://127.0.0.1:5000/javit");
+
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.InnerException);
             }
+
+
+
         }
     }
 }

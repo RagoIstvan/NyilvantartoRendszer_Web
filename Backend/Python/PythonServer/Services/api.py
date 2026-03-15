@@ -58,7 +58,7 @@ def javit_mentese():
     bejovo_adatok = request.get_json()
 
     if not bejovo_adatok:
-        return jsonify({"Nem érkezett adat!"}), 400
+        return jsonify("Nem érkezett adat!"), 400
 
 
     with Session(engine) as session:
@@ -85,7 +85,7 @@ def javit_mentese():
         header=not fajl_letezik)
 
 
-    return jsonify({"Sikeresen elmentve az SQLite-ba és a CSV-be is!"}), 200
+    return jsonify("Sikeresen elmentve az SQLite-ba és a CSV-be is!"), 200
 
 @app.route('/naplo', methods=['POST'])
 def naplo_mentese():
@@ -94,7 +94,7 @@ def naplo_mentese():
     bejovo_adatok = request.get_json()
 
     if not bejovo_adatok:
-        return jsonify({"Nem érkezett adat!"}), 400
+        return jsonify("Nem érkezett adat!"), 400
 
 
     with Session(engine) as session:
@@ -121,6 +121,6 @@ def naplo_mentese():
         header=not fajl_letezik)
 
 
-    return jsonify({"Sikeresen elmentve az SQLite-ba és a CSV-be is!"}), 200
+    return jsonify("Sikeresen elmentve az SQLite-ba és a CSV-be is!"), 200
 
 
